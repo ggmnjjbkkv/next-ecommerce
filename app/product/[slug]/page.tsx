@@ -1,3 +1,5 @@
+import ImageGallery from "@/app/components/ImageGallery";
+import { fullProduct } from "@/app/interface";
 import { client } from "@/app/lib/sanity";
 
 async function getData(slug: string) {
@@ -22,8 +24,16 @@ export default async function ProductPage({
 }: {
   params: { slug: string };
 }) {
-  const data = await getData(params.slug)
+  const data: fullProduct = await getData(params.slug)
+  
+
   return (
-    <h1>Hello from Product</h1>
+    <div className="bg-white">
+      <div className="mx-auto max-w-screen-xl px-4 md:px-8">
+        <div className="grid gap-8 md:grid-cols-2">
+          <ImageGallery images={data.images} />
+        </div>
+      </div>
+    </div>
   )
 }
