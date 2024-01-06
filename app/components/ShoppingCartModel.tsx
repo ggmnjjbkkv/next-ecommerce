@@ -1,11 +1,13 @@
 "use client";
 
+import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
   SheetHeader,
   SheetTitle,
 } from "@/components/ui/sheet"
+import { redirect } from "next/dist/server/api-utils";
 import Image from "next/image";
 import { useShoppingCart } from "use-shopping-cart"
  
@@ -17,9 +19,21 @@ export default function ShoppingCartModel() {
     handleCartClick, 
     cartDetails, 
     removeItem,  
-    totalPrice
+    totalPrice,
+    redirectToCheckout
    } = useShoppingCart()
-  
+
+   async function handleCheckoutClick(event: any) {
+    event.preventDefault()
+    try {
+      const result = await redirectToCheckout()
+        if(result?.error) {
+          console.log('result');
+        }
+    }catch(error) {
+      console.log(error);
+    }
+   }
    return (
     <Sheet open={shouldDisplayCart} onOpenChange={()=> handleCartClick()}>
       <SheetContent className="sm:max-w-lg w-[90vw]">
@@ -69,6 +83,19 @@ export default function ShoppingCartModel() {
             <div className="flex justify-between text-base font-medium text-gray-900">
               <p>Subtotal:</p>
               <p>${totalPrice?.toFixed(2)}</p>
+            </div>
+            <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes are calculated at checkout</p>
+            <div className="mt-6">
+              <Button className="w-full">
+                Checkout
+              </Button>
+            </div>
+            <div className="mt-6 flex justify-center text-center text-sm text-gray-500">
+              <p>
+                OR{""}  <button
+                onClick={() => handleCartClick()}
+                className="font-medium text-primary hover:text-primary/80">Continue Shopping</button>
+              </p>
             </div>
           </div>
         </div>
