@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Star, Truck } from "lucide-react";
 
 async function getData(slug: string) {
-  const query = `*[_type == "product" && slug.current == "${slug}"] [0] {
+  const query = `*[_type == "product" && slug.current == "${slug}"][0] {
     _id,
       images,
       price,
@@ -13,7 +13,6 @@ async function getData(slug: string) {
       description,
       "slug": slug.current,
       "categoryName": category->name,
-      
   }`;
 
   const data = await client.fetch(query)
