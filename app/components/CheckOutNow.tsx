@@ -33,7 +33,7 @@ export default function CheckOutNow ({
     onClick={()=> {
      buyNow(product.price_id);
     }}>
-      Add To Cart
+      Checkout Now
     </Button>
   );
 }
