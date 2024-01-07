@@ -29,10 +29,11 @@ export default function CheckOutNow ({
     price_id: price_id
   }
   return (
-    <Button onClick={()=> {
+    <Button 
+    onClick={()=> {
      buyNow(product.price_id);
     }}>
       Add To Cart
     </Button>
-  )
+  );
 }

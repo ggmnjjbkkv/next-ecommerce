@@ -21,7 +21,7 @@ export default function ShoppingCartModel() {
     removeItem,  
     totalPrice,
     redirectToCheckout
-   } = useShoppingCart()
+   } = useShoppingCart();
 
    async function handleCheckoutClick(event: any) {
     event.preventDefault();
@@ -86,7 +86,8 @@ export default function ShoppingCartModel() {
             </div>
             <p className="mt-0.5 text-sm text-gray-500">Shipping and taxes are calculated at checkout</p>
             <div className="mt-6">
-              <Button className="w-full">
+              <Button 
+              onClick={handleCheckoutClick} className="w-full">
                 Checkout
               </Button>
             </div>
