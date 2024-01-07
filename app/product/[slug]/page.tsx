@@ -72,7 +72,8 @@ export default async function ProductPage({
               name={data.name} 
               price={data.price} 
               key={data._id}
-              price_id={data.price_id}/>
+              price_id={data.price_id}
+              />
               <CheckOutNow
                currency="USD" 
                description={data.description} 
@@ -80,7 +81,8 @@ export default async function ProductPage({
                name={data.name} 
                price={data.price} 
                key={data._id}
-               price_id={data.price_id}/>
+               price_id={data.price_id}
+               />
             </div>
             <p className="mt-12 text-base text-gray-500 tracking-wide">{data.description}</p>
           </div>
