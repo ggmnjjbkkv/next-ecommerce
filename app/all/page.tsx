@@ -4,7 +4,7 @@ import { client } from "../lib/sanity";
 import Image from "next/image";
 
 async function getData() {
-  const query = `*[_type == "product"] [0...4] | order(_createdAt asc) {
+  const query = `*[_type == "product"] {
     _id,
       price,
       name,

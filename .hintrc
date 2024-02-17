@@ -15,6 +15,8 @@
         "list": "off"
       }
     ],
-    "button-type": "off"
+    "button-type": "off",
+    "typescript-config/is-valid": "off",
+    "meta-viewport": "off"
   }
 }
